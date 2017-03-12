@@ -1,0 +1,16 @@
+# Uncomment the following to prevent the httpoxy vulnerability
+# See: https://httpoxy.org/
+#<IfModule mod_headers.c>
+#    RequestHeader unset Proxy
+#</IfModule>
+
+# Enable directory browsing
+	#Options All +Indexes
+# Disable directory browsing
+	Options All -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule    ^$    public/    [L]
+    RewriteRule    (.*) public/$1    [L]
+</IfModule>
